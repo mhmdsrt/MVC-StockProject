@@ -1,0 +1,66 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">MVC STOCK</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/Category/GetAllCategory">Kategoriler</a></li>
+                <li><a href="/Product/GetAllProduct">Ürünler</a></li>
+                <li><a href="/Customer/GetAllCustomer">Müşteriler</a></li>
+                <li><a href="/Sales/GetAllSales">Satışlar</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#AboutMeModal">Hakkımda</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <div class="modal" id="AboutMeModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title">
+                        <h1 >Hakkımda</h1>
+                    </div>
+                </div>
+
+                <div class="modal-body">
+                    <div>
+                        <img src="~/MyPhoto/mhmd.jpg" alt="Fotoğrafım" class="img-circle img-responsive" style="width:300px; height:320px; margin-left:150px;"/>
+                    </div>
+                    <div style="margin-top:30px; font-size:xx-large">
+                        @Html.Label("Muhammed Sert") <br /> 
+                        @Html.Label("Bilgisayar Mühendisliği") <br />
+                        @Html.Label(".NET | .NET CORE | MVC | C# | SQL | MSSQL | LinQ-Lambda Expression | OOP | Entity Framework ",new {@style="color:darkgreen"})<br />
+                        <a href="https://github.com/mhmdsrt">GitHub</a><br />
+                        <a href="https://www.linkedin.com/in/muhammed-sert-b07bb5265/">Linkedln</a><br />
+                        <button class="btn btn-danger" data-dismiss="modal" type="button" style="font-size:large">Çık</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

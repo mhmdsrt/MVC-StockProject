@@ -1,0 +1,62 @@
+﻿@model  MvcStock.Models.Entity.Categories
+@{
+    /*
+    @model kullanımı:Sadece Controller tarafından gönderilen "return View()" içerisinden parametre olarak gönderilen
+    entity veya List<Entity> gibi öğeleri alır.Mesela buradaki "@model  MvcStock.Models.Entity.Categories" ifadesi
+    Controller içerisindeki "return View()" ifadesindeki gönderilecek olan modelin hangi türden beklendiğini gösterir.
+
+       @model ifadesi yalnızca return View(model) ile gönderilen belirli bir veri modeline erişim sağlar
+
+
+    */
+}
+
+@{
+    ViewBag.Title = "GetCategoryToUpdate";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@{
+    /*
+    @using (Html.BeginForm(string actionName, string controllerName, FormMethod method)) {  }
+
+    1.parametre formun gönderileceği Action(eylem) metodunun ismi
+    2.parametre formun gönderileceği Controller'in ismi
+    3.parametre formun hangi HTTP metodu ile gönderileceğini belirler
+
+    */
+}
+
+
+@* Validation kontrollerini form tafından burada olduğu gibi "new { @class = "form-control", required = "", maxlength = 25, minlength = 3 }"
+    ile yaparsak validation kontrolünü tarayıcı düzeyinden yapmış oluruz yani ekle butonuna basssak bile form gönderilmez post işlemi 
+    gerçekleşmez.
+
+    Validation kontrollerini Model/Entity tarafındaki Class'ların içerisindeki Propertylerin hemen üstüne [Required],[Range] gibi yaparsak
+    buradaki validation kontrolleri formdan veri tabanına gönderilmiş bile olsa doğrulama sağlanmadığı için veri tabanına kaydedilmez.
+    
+    *@
+
+
+@using (Html.BeginForm("UpdateCategory", "Category", FormMethod.Post))
+{
+    <div>
+        @Html.Label("Kategori ID:")
+        @Html.TextBoxFor(m => m.CategoryID, new { @class = "form-control", @readonly = "readonly" })
+        @Html.Label("Kategori Ad:")
+        @Html.TextBoxFor(m => m.CategoryName, new { @class = "form-control", required = "", maxlength = 25, minlength = 3 })
+    </div>
+    <div>
+        <button href="/Category/UpdateCategory" style="margin-top:10px;" class="btn btn-warning">Update Category</button>
+        @{
+            /*
+               href="/Category/UpdateCategory" kullanmasak bile çalışıyor.
+            */
+        }
+    </div>
+
+}
+@{
+    // Yukarıdaki m.CategoryID ve m.CategoryName ifadelerine Controller içerisindeki GetCustomerToUpdate
+    // metodu tarafından gönderilen entity üzerinden erişim sağlanmaktadır.
+}

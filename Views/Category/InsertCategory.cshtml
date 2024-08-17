@@ -1,0 +1,43 @@
+﻿@model MvcStock.Models.Entity.Categories
+@{
+    ViewBag.Title = "InsertCategory";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@* Validation kontrollerini form tafından burada olduğu gibi "new { @class = "form-control", required = "", maxlength = 25, minlength = 3 }"
+    ile yaparsak validation kontrolünü tarayıcı düzeyinden yapmış oluruz yani ekle butonuna basssak bile form gönderilmez post işlemi
+    gerçekleşmez.
+
+    Validation kontrollerini Model/Entity tarafındaki Class'ların içerisindeki Propertylerin hemen üstüne "[Required],[Range]" gibi yaparsak
+    buradaki validation kontrolleri formdan veri tabanına gönderilmiş bile olsa doğrulama sağlanmadığı için veri tabanına kaydedilmez.
+
+*@
+
+<form method="post">
+    @*<div>
+            <label>Kategori Adı</label>
+            <input class="form-control" type="text" name="CategoryName"></input>
+        </div>*@
+
+    <div>
+        @Html.Label("Kategori Adı:")
+        @Html.TextBoxFor(m => m.CategoryName, new { @class = "form-control", @required = "", maxlength = "25", minlength = "3" })
+        @*@Html.ValidationMessageFor(m => m.CategoryName, "", new { @style = "color:red" })*@
+        @*
+            @Html.ValidationMessageFor(m => m.CategoryName) ifadesi CategoryName için bir hata mesajı olup olmadığını kontrol eder.
+                Eğer hata mesajı varsa bu mesajın html sayfasında görülmesini sağlar.
+        *@
+
+    </div>
+    @*   @type="number" diyerek validation türü olarak sadece sayısal verinin girilmesini sağlıyoruz.
+        @max validation kontrolü -> sayısal olarak en büyük girilecek veriyi belirliyoruz.
+        @min validation kontrolü -> sayısal olarak en küçük girilecek veriyi belirliyoruz.
+        @maxlength validation kontrolü -> karakter uzunluğu olarak maximum girilebilecek uzunlugu belirliyoruz.
+        @minlength validation kontrolü -> karakter uzunluğu olarak minumum girilebilecek uzunlugu belirliyoruz.
+    *@
+
+    <div style="margin-top:10px">
+        <button id="InsertCategory" class="btn btn-success">Insert Category</button>
+      
+    </div>
+</form>

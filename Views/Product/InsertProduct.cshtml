@@ -1,0 +1,76 @@
+﻿@model MvcStock.Models.Entity.Products
+
+@{
+    ViewBag.Title = "InsertProduct";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@* Validation(Doğrulama) kontrollerini Products Tablosu için burada html tarafında yapıyoruz çünkü ilişkili sütunlar olduğu için IEnumrable gibi şeyler
+    kullanmak zorunda kalacagımız için bu proje için şimdilik böyle yapıyoruz*@
+
+
+@* Validation kontrollerini form tafından burada olduğu gibi "new { @class = "form-control", required = "", maxlength = 25, minlength = 3 }"
+    ile yaparsak validation kontrolünü tarayıcı düzeyinden yapmış oluruz yani ekle butonuna basssak bile form gönderilmez post işlemi
+    gerçekleşmez.
+
+    Validation kontrollerini Model/Entity tarafındaki Class'ların içerisindeki Propertylerin hemen üstüne [Required],[Range] gibi yaparsak
+    buradaki validation kontrolleri formdan veri tabanına gönderilmiş bile olsa doğrulama sağlanmadığı için veri tabanına kaydedilmez.
+
+*@
+
+<form method="post">
+
+    <div>
+        @Html.Label("Ürün Adı")
+        @Html.TextBoxFor(m => m.ProductName, new { @class = "form-control", @required = "Gerekli", maxlength = "25", minlength = "3" })
+    </div>
+
+    <div>
+        @Html.Label("Kategoriler")
+        @Html.DropDownListFor(x => x.ProductCategoryID, (List<SelectListItem>)ViewBag.valueList, new { @class = "form-control" })
+
+        @{
+            /*
+            İlk parametre seçilen öğenin value değerinin gönderileceği yer(hangi sütuna gidecekse). Yani "x => x.ProductCategoryID" kısım.
+            İkinci parametre DropDownList yani açılır listenin nereden geleceği yani (List<SelectListItem>)ViewBag.valueList kısım.
+            Ücüncü parametre CSS uyguluyoruz sadece.
+
+            Açılır listeyi görünteyelebilmemizi sağlayan kısım "(List<SelectListItem>)VewBag.valueList" ve
+            açılır listeden seçilen öğenin value değerini form ile gönderip veri tabanına yani ProductCategoryID sütununa kaydetmemizi
+            sağlayan kısım isim x =>x.ProductCategoryID kısmı oluyor.
+
+            Form ile gönderdiğimiz "value" değeri Controller kısmındaki Value = x.CategoryID.ToString() ifadsinden geliyor.
+
+
+            */
+        }
+    </div>
+
+
+    <div>
+        @Html.Label("Fiyat")
+        @Html.TextBoxFor(m => m.ProductCost, new { @class = "form-control", @required = "", @type = "number", @min = 100, @max = 1000000 })
+    </div>
+    <div>
+        @Html.Label("Marka")
+        @Html.TextBoxFor(m => m.ProductBrand, new { @class = "form-control", @required = "" })
+    </div>
+
+    <div>
+        @Html.Label("Stok")
+        @Html.TextBoxFor(m => m.ProductStock, new { @class = "form-control", @required = "", @type = "number", @min = 10, @max = 250 })
+    </div>
+    @*   @type="number" diyerek validation türü olarak sadece sayısal verinin girilmesini sağlıyoruz.
+        @max validation kontrolü -> sayısal olarak en büyük girilecek veriyi belirliyoruz.
+        @min validation kontrolü -> sayısal olarak en küçük girilecek veriyi belirliyoruz.
+        @maxlength validation kontrolü -> karakter uzunluğu olarak maximum girilebilecek uzunlugu belirliyoruz.
+        @minlength validation kontrolü -> karakter uzunluğu olarak minumum girilebilecek uzunlugu belirliyoruz.
+    *@
+
+
+
+
+
+    <button class="btn btn-success" style="margin-top:10px">Insert Product</button>
+
+</form>

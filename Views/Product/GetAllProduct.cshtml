@@ -1,0 +1,106 @@
+﻿@using MvcStock.Models.Entity
+@*
+    ""@model List<Products>"" böyle  değilde aşağıdaki gibi kullanmamızın sebebi Controller tarafından ToPagedList
+     olarak gönderilmesinden dolayı.
+
+*@
+
+@model PagedList.IPagedList<Products>
+@using PagedList
+@using PagedList.Mvc
+@{
+    // @model ifadesi yalnızca return View(model) ile gönderilen belirli bir veri modeline erişim sağlar
+
+}
+@{
+    ViewBag.Title = "GetAllProduct";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>Ürün ID</th>
+        <th>Ürün Adı</th>
+        <th>Kategori</th>
+        <th>Fiyat</th>
+        <th>Marka</th>
+        <th>Stok</th>
+        <th>DELETE</th>
+        <th>UPDATE</th>
+    </tr>
+
+    <tbody>
+        @foreach (var prod in Model)
+        {
+            <tr>
+                <th>@prod.ProductID</th>
+                <td>@prod.ProductName</td>
+                @{
+                    /*
+                    Product sınıfı içerisinde olan "public virtual Categories Categories { get; set; }" yapı sayesinde "@prod.Categories.CategoryName" yapabiliyoruz.
+
+                    Navigasyon Özelliği: public virtual Categories Categories { get; set; } ifadesi, Products ve Categories arasında bir ilişki kurar.
+                    Bu navigasyon özelliği, Categories verilerini ürünler ile ilişkilendirmeye olanak tanır.*/
+
+                }
+                <td>@prod.Categories.CategoryName</td>
+                <td>@prod.ProductCost</td>
+                <td>@prod.ProductBrand</td>
+                <td>@prod.ProductStock</td>
+                @*<td><a href="/Product/DeleteProduct/@prod.ProductID" class="btn btn-danger">DELETE</a></td>
+                         @{
+                             /*
+                    "/Product/DeleteProduct/@prod.ProductID" ifadesi ile DeleteProduct Action'una parametre olarak ProductID gönderiyoruz
+                              */
+                         }*@
+
+                <td>
+               @Html.ActionLink(
+               "DELETE",
+               "DeleteProduct",
+               "Product",
+               new { id = prod.ProductID },
+               new
+               {
+                   onclick = "return confirm('Ürünü gerçekten silmek istiyor musunuz?');",
+                   @class = "btn btn-danger"
+               }
+               )
+                </td>
+                @*
+                    @Html.ActionLink() ifadesi
+                    1.Parametre Link'in adı,kullancıya gösterilecek adı
+                    2.Parametre Linke tıklanıldığında Hangi ActionResult(eylemin,metodun) metodunu gerçekleştireceği
+                    3.Parametre gerçekleşecek olan eylemin(metodun) bulunduğu Controller ismi
+                    4.Parametre Route değeri yani "DeleteCustomer" metoduna gönderilecek parametre
+                    5.Parametre şunu yapıyor: linke tıklanıldığında(onclick) 'Silmek istiyor musunuz?' gibi string ifade çıkartan
+                    ve Evet denildiği zaman return true yapan ve 2.Parametredeki ActionResult'u döndürür, hayır denildiği zaman ise
+                    return false döner ve 2.Parametredeki metot(eylem) gerçekleşmez.(Yani onay kutusundan evet denilirse metodu çalıştırır
+                    hayır denilirse iptal eder.)
+                    6.Parametre @class ile css uyguluyoruz.
+
+                *@
+                <td><a href="/Product/GetProductToUpdate/@prod.ProductID" class="btn btn-info">UPDATE</a></td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+<div>
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("GetAllProduct", new { page }))
+    @*
+        1.Parametre Controller tarafından gönderilen PagedList'tir.
+
+            Her sayfa numarasına tıkladığımızda, o sayfa numarası GetAllProduct metoduna parametre olarak gönderilir
+            ve metot yeniden çağrılır. Bu sayede, doğru sayfadaki veriler getirilip görüntülenir.
+
+            Buradaki "page" değeri Controller tarafındaki GetAllProduct metodundaki paramete ismi olan "page" ile aynı olmak zorundadır.
+            Buradaki "page" değeri kullanıcı hangi sayfaya tıklarsa o sayfayı temsil eder.Böylece tıklandığı sayfa numarası metoda
+            parametre olarak gönderilerek Metot içerisinde de "ToPagedList(page,10)" olduğu için kullanıcın tıkladığı sayfaya yönlendirir.
+    *@
+</div>
+<div>
+    <a href="/Product/InsertProduct" class="btn btn-primary">Ürün Ekle</a>
+</div>
+

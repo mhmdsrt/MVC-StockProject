@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProductsCustomersModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Products_Categories" FromRole="Categories" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="CustormerID" />
+    </Key>
+    <Property Name="CustormerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerSurName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerAge" Type="Byte" />
+    <Property Name="CustomerCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Saleses" Relationship="Self.FK_Saleses_Customers" FromRole="Customers" ToRole="Saleses" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProductCategoryID" Type="Int16" />
+    <Property Name="ProductCost" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ProductBrand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProductStock" Type="Byte" />
+    <NavigationProperty Name="Categories" Relationship="Self.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
+    <NavigationProperty Name="Saleses" Relationship="Self.FK_Saleses_Products" FromRole="Products" ToRole="Saleses" />
+  </EntityType>
+  <EntityType Name="Saleses">
+    <Key>
+      <PropertyRef Name="SalesID" />
+    </Key>
+    <Property Name="SalesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SalesProductID" Type="Int32" />
+    <Property Name="SalesCustomerID" Type="Int32" />
+    <Property Name="SalesPiece" Type="Int16" />
+    <Property Name="SalesCost" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK_Saleses_Customers" FromRole="Saleses" ToRole="Customers" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Saleses_Products" FromRole="Saleses" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Products_Categories">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="ProductCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Saleses_Customers">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+    <End Role="Saleses" Type="Self.Saleses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="CustormerID" />
+      </Principal>
+      <Dependent Role="Saleses">
+        <PropertyRef Name="SalesCustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Saleses_Products">
+    <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+    <End Role="Saleses" Type="Self.Saleses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Saleses">
+        <PropertyRef Name="SalesProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProductsCustomersEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Categories" />
+    <EntitySet Name="Customers" EntityType="Self.Customers" />
+    <EntitySet Name="Products" EntityType="Self.Products" />
+    <EntitySet Name="Saleses" EntityType="Self.Saleses" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_Products_Categories" Association="Self.FK_Products_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Saleses_Customers" Association="Self.FK_Saleses_Customers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Saleses" EntitySet="Saleses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Saleses_Products" Association="Self.FK_Saleses_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Saleses" EntitySet="Saleses" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

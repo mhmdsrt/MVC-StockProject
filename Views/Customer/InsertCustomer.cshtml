@@ -1,0 +1,60 @@
+﻿@model MvcStock.Models.Entity.Customers
+@*
+    Burada Controller tarafında return view(model) ile   model göndermiyoruz boş bir bir model oluşturuyoruz lambda ifadelerini kullanmak için.
+*@
+@{
+    ViewBag.Title = "InsertCustomer";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@* Validation kontrollerini form tafından burada olduğu gibi "new { @class = "form-control", required = "", maxlength = 25, minlength = 3 }"
+    ile yaparsak validation kontrolünü tarayıcı düzeyinden yapmış oluruz yani ekle butonuna basssak bile form gönderilmez post işlemi
+    gerçekleşmez.
+
+    Validation kontrollerini Model/Entity tarafındaki Class'ların içerisindeki Propertylerin hemen üstüne [Required],[Range] gibi yaparsak
+    buradaki validation kontrolleri formdan veri tabanına gönderilmiş bile olsa doğrulama sağlanmadığı için veri tabanına kaydedilmez.
+
+*@
+<form method="post">
+
+    <div>
+        @Html.Label("Müşteri Adı")
+        @Html.TextBoxFor(m => m.CustomerFirstName, new { @class = "form-control", required = "", maxlength = 25, minlength = 3 })
+        @*@Html.ValidationMessageFor(m => m.CustomerFirstName, "", new { @style = "color:red" })*@
+    </div>
+
+    <div style="margin-top:15px">
+        @Html.Label("Müşteri Soyadı")
+        @Html.TextBoxFor(m => m.CustomerSurName, new { @class = "form-control", required = "", maxlength = 25, minlength = 3 })
+        @*@Html.ValidationMessageFor(m => m.CustomerSurName, "", new { @style = "color:red" })*@
+    </div>
+
+    <div style="margin-top:15px">
+        @Html.Label("Müşteri Yaşı")
+        @Html.TextBoxFor(m => m.CustomerAge, new { @class = "form-control", required = "", max = 65, min = 14, type = "number" })
+        @*@Html.ValidationMessageFor(m => m.CustomerAge, "", new { @style = "color:red" })*@
+    </div>
+
+    <div style="margin-top:15px">
+        @Html.Label("Müşteri Şehri")
+        @Html.TextBoxFor(m => m.CustomerCity, new { @class = "form-control", required = "", maxlength = 25, minlength = 3 })
+        @*@Html.ValidationMessageFor(m => m.CustomerCity, "", new { @style = "color:red" })*@
+    </div>
+
+    <div style="margin-top:15px">
+        @Html.Label("Müşteri Ülkesi")
+        @Html.TextBoxFor(m => m.CustomerCountry, new { @class = "form-control", required = "", maxlength = 25, minlength = 3 })
+        @*@Html.ValidationMessageFor(m => m.CustomerCountry, "", new { @style = "color:red" })*@
+    </div>
+    @*  @type="number" diyerek validation türü olarak sadece sayısal verinin girilmesini sağlıyoruz.
+        @max validation kontrolü -> sayısal olarak en büyük girilecek veriyi belirliyoruz.
+        @min validation kontrolü -> sayısal olarak en küçük girilecek veriyi belirliyoruz.
+        @maxlength validation kontrolü -> karakter uzunluğu olarak maximum girilebilecek uzunlugu belirliyoruz.
+        @minlength validation kontrolü -> karakter uzunluğu olarak minumum girilebilecek uzunlugu belirliyoruz.
+        Bu validation ifadelerini "@" ile kullansakda kullanmasakda sorun olmuyor.
+    *@
+
+    <div>
+        <button class="btn btn-success " style="margin-top:10px">Insert Customer</button>
+    </div>
+</form>

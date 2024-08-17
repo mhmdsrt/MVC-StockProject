@@ -1,0 +1,99 @@
+﻿@using MvcStock.Models.Entity
+@*@model List<Customers>*@
+@{
+    // @model ifadesi yalnızca return View(model) ile gönderilen belirli bir veri modeline erişim sağlar
+
+}
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Customers>
+@{
+    ViewBag.Title = "GetAllCustomer";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>Müşteri ID</th>
+        <th>Müşteri Adı</th>
+        <th>Müşteri Soyadı</th>
+        <th>Müşteri Yaşı</th>
+        <th>Müşteri Şehir</th>
+        <th>Müşteri Ülke</th>
+        <th>DELETE</th>
+        <th>UPDATE</th>
+    </tr>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <th>@customer.CustormerID</th>
+                <td>@customer.CustomerFirstName</td>
+                <td>@customer.CustomerSurName</td>
+                <td>@customer.CustomerAge</td>
+                <td>@customer.CustomerCity</td>
+                <td>@customer.CustomerCountry</td>
+                @*<td><a href="/Customer/DeleteCustomer/@customer.CustormerID" class="btn btn-danger">DELETE</a></td>*@
+                @{
+                    /*
+                    "/Customer/DeleteCustomer/@customer.CustormerID" ifadesi ile DeleteCustomer Action'una parametre olarak CustormerID gönderiyoruz
+                     */
+                }
+
+                <td>
+                    @Html.ActionLink(
+                    "Delete",
+                    "DeleteCustomer",
+                    "Customer",
+                    new { id = @customer.CustormerID },
+                    new
+                             {
+                                 onclick = "return confirm('Müşteriyi gerçekten silmek istiyor musunuz?');",
+
+                             @class = "btn btn-danger"
+                             })
+                </td>
+                @*
+        @Html.ActionLink() ifadesi
+        1.Parametre Link'in adı,kullancıya gösterilecek adı
+        2.Parametre Linke tıklanıldığında Hangi ActionResult(eylemin,metodun) metodunu gerçekleştireceği
+        3.Parametre gerçekleşecek olan eylemin(metodun) bulunduğu Controller ismi
+        4.Parametre Route değeri yani "DeleteCustomer" metoduna gönderilecek parametre
+        5.Parametre şunu yapıyor: linke tıklanıldığında(onclick) 'Silmek istiyor musunuz?' gibi string ifade çıkartan
+        ve Evet denildiği zaman return true yapan ve 2.Parametredeki ActionResult'u döndürür, hayır denildiği zaman ise
+        return false döner ve 2.Parametredeki metot(eylem) gerçekleşmez.(Yani onay kutusundan evet denilirse metodu çalıştırır
+        hayır denilirse iptal eder.)
+        6.Parametre @class ile css uyguluyoruz.
+
+                *@
+
+                <td><a href="/Customer/GetCustomerToUpdate/@customer.CustormerID" class="btn btn-info">UPDATE</a></td>
+                @{
+                    //Customer Controllü altında GetCustomerToUpdate metodunu(Action=Eylem) mini çağır ve parametre olarak CustomerID'sini ver
+                }
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+<div>
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("GetAllCustomer", new { page }))
+
+    @*
+        1.Parametre Controller tarafından gönderilen PagedList'tir.
+
+            Her sayfa numarasına tıkladığımızda, o sayfa numarası GetAllProduct metoduna parametre olarak gönderilir
+            ve metot yeniden çağrılır. Bu sayede, doğru sayfadaki veriler getirilip görüntülenir.
+
+            Buradaki "page" değeri Controller tarafındaki GetAllProduct metodundaki paramete ismi olan "page" ile aynı olmak zorundadır.
+            Buradaki "page" değeri kullanıcı hangi sayfaya tıklarsa o sayfayı temsil eder.Böylece tıklandığı sayfa numarası metoda
+            parametre olarak gönderilerek Metot içerisinde de "ToPagedList(page,10)" olduğu için kullanıcın tıkladığı sayfaya yönlendirir.
+    *@
+</div>
+
+<div>
+    <a href="/Customer/InsertCustomer" class="btn btn-primary">Müşteri Ekle</a>
+
+</div>

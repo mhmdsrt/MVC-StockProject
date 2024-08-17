@@ -1,0 +1,100 @@
+﻿@using MvcStock.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+
+@*
+      @model List<Categories>
+       ""@model List<Products>"" böyle  değilde aşağıdaki gibi kullanmamızın sebebi Controller tarafından ToPagedList
+    olarak gönderilmesinden dolayı.
+*@
+
+@model PagedList.IPagedList<Categories>
+@{
+    /*
+     @model "List<Categories>" ifadesi GetAllCategory.cshtml viewinin yani bu sayfanın hangi türde bir model
+     beklediğini gösterir.
+
+     return View() deki değeri karşılamak için @model List<Categories> kullanılıyor.
+
+     @model ifadesi yalnızca return View(model) ile gönderilen belirli bir veri modeline erişim sağlar
+    */
+}
+
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+
+
+<table class="table table-bordered" style="margin-top:15px;">
+    <tr>
+        <th>Kategori ID</th>
+        <th>Kategori İsmi</th>
+        <th>DELETE</th>
+        <th>UPDATE</th>
+    </tr>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <th>@x.CategoryID</th>
+                <td>@x.CategoryName</td>
+                @*<td><a href="/Category/DeleteCategory/@x.CategoryID" class="btn btn-danger">DELETE</a></td>*@
+
+                <td>
+                    @Html.ActionLink(
+                    "Delete",
+                    "DeleteCategory",
+                    "Category",
+                    new { id = @x.CategoryID },
+                    new
+                      {
+                        onclick = "return confirm('Kategoriyi gerçekten silmek istiyor musunuz?');",
+                        @class = "btn btn-danger"
+                      })
+                </td>
+                @*
+        @Html.ActionLink() ifadesi
+            1.Parametre Link'in adı,kullancıya gösterilecek adı
+            2.Parametre Linke tıklanıldığında Hangi ActionResult(eylemin,metodun) metodunu gerçekleştireceği
+            3.Parametre gerçekleşecek olan eylemin(metodun) bulunduğu Controller ismi
+            4.Parametre Route değeri yani "DeleteCategory" metoduna gönderilecek parametre
+            5.Parametre şunu yapıyor: linke tıklanıldığında(onclick) 'Silmek istiyor musunuz?' gibi string ifade çıkartan
+            ve Evet denildiği zaman return true yapan ve 2.Parametredeki ActionResult'u döndürür, hayır denildiği zaman ise
+            return false döner ve 2.Parametredeki metot(eylem) gerçekleşmez.(Yani onay kutusundan evet denilirse metodu çalıştırır
+            hayır denilirse iptal eder.)
+            6.Parametre @class ile css uyguluyoruz.
+
+
+                *@
+                <td><a href="/Category/GetCategoryToUpdate/@x.CategoryID" class="btn btn-info">UPDATE</a></td>
+            </tr>
+    }
+
+    </tbody>
+
+</table>
+<a href="/Category/InsertCategory" class="btn btn-primary">Kategori Ekle</a>
+@{
+    /*
+    Sen bu linke tıkladığında Category Controller'in altındaki InsertCategory metodunu çalıştır yani URL si
+    /Category/InsertCategory olan sayfaya git diyoruz.
+    */
+}
+
+<div>
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("GetAllCategory", new { page }))
+
+    @*
+        1.Parametre Controller tarafından gönderilen PagedList'tir.
+
+            Her sayfa numarasına tıkladığımızda, o sayfa numarası GetAllProduct metoduna parametre olarak gönderilir
+            ve metot yeniden çağrılır. Bu sayede, doğru sayfadaki veriler getirilip görüntülenir.
+
+            Buradaki "page" değeri Controller tarafındaki GetAllProduct metodundaki paramete ismi olan "page" ile aynı olmak zorundadır.
+            Buradaki "page" değeri kullanıcı hangi sayfaya tıklarsa o sayfayı temsil eder.Böylece tıklandığı sayfa numarası metoda
+            parametre olarak gönderilerek Metot içerisinde de "ToPagedList(page,10)" olduğu için kullanıcın tıkladığı sayfaya yönlendirir.
+    *@
+</div>

@@ -1,0 +1,59 @@
+﻿@model MvcStock.Models.Entity.Saleses
+
+@{
+    ViewBag.Title = "GetAllSales";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div>
+    <button type="button" data-toggle="modal" data-target="#SalesModal" class="btn btn-primary">
+        Satış Ekle
+    </button>
+</div>
+
+<div class="modal" id="SalesModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header ">
+                <h2 class="modal-title"><strong>SATIŞ</strong></h2>
+            </div>
+
+            <div class="modal-body">
+
+                @using (Html.BeginForm("InsertSales", "Sales", FormMethod.Post))
+                {
+
+                    <div style="margin-top:10px;">
+                        @Html.Label("Satılacak Ürün")
+                        @Html.DropDownListFor(m => m.SalesProductID, (List<SelectListItem>)ViewBag.valueListProduct, new { @class = "form-control" })
+                    </div>
+                    <div style="margin-top:10px;">
+                        @Html.Label("Satılacak Müşteri")
+                        @Html.DropDownListFor(m => m.SalesCustomerID, (List<SelectListItem>)ViewBag.valueListCustomer, new { @class = "form-control" })
+                    </div>
+                    <div style="margin-top:10px;">
+                        @Html.Label("Satış Miktarı")
+                        @Html.TextBoxFor(m => m.SalesPiece, new { @class = "form-control", @required = "", @min = 1, @max = 250, @type = "number" })
+                    </div>
+                    <div style="margin-top:10px;">
+                        @Html.Label("Satış Maaliyeti")
+                        @Html.TextBoxFor(m => m.SalesCost, new { @class = "form-control", @required = "", @min = 1, @max = 1000000, @type = "number" })
+                    </div>
+
+                    <div style="margin-top:10px;">
+                        <button type="submit" onclick="return confirm('Satışı gerçekleştirmek istiyor musunuz?');" class="btn btn-info">
+                            Satış Yap
+                            @*
+                                Kullanıcı "Evet" derse form submit edilir, aksi takdirde işlem iptal edilir.
+                            *@
+                        </button>
+                        <button type ="button" class="btn btn-danger" data-dismiss="modal" style="margin-left:10px;">Vazgeç</button>
+
+
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

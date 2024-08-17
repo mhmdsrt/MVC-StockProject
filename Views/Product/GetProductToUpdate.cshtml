@@ -1,0 +1,47 @@
+﻿
+@model MvcStock.Models.Entity.Products
+
+@{
+    /*
+    Product Controller içerisindeki GetProductToUpdate metodu(Action-eylem) dönerken view ile entity gönderiyor ve
+    burada da @model ile onu forma taşıyoruz.
+    */
+}
+
+
+@{
+    ViewBag.Title = "GetProductToUpdate";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("UpdateProduct", "Product", FormMethod.Post))
+{
+    <div>
+        @Html.Label("Ürün ID")
+        @Html.TextBoxFor(m => m.ProductID, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+    <div>
+        @Html.Label("Ürün Adı")
+        @Html.TextBoxFor(m => m.ProductName, new { @class = "form-control", required = "", maxlength = 25, minlength = 3 })
+    </div>
+    <div>
+        @Html.Label("Kategori")
+        @Html.DropDownListFor(m => m.ProductCategoryID, (List<SelectListItem>)ViewBag.valueList, new { @class = "form-control" })
+    </div>
+    <div>
+        @Html.Label("Ürün Fiyat")
+        @Html.TextBoxFor(m => m.ProductCost, new { @class = "form-control", required = "", type = "number", max = 1000000, min = 100 })
+    </div>
+    <div>
+        @Html.Label("Ürün Marka")
+        @Html.TextBoxFor(m => m.ProductBrand, new { @class = "form-control", required = "", maxlength = 25, minlength = 3 })
+    </div>
+    <div>
+        @Html.Label("Ürün Stok Miktarı")
+        @Html.TextBoxFor(m => m.ProductStock, new { @class = "form-control", required = "", min = 10, max = 250, type = "number" })
+    </div>
+    <div>
+        <button href="/Product/UpdateProduct " class="btn btn-warning" style="margin-top:10px;">Update Product</button>
+    </div>
+}

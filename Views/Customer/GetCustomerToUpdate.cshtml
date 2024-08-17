@@ -1,0 +1,40 @@
+﻿@model MvcStock.Models.Entity.Customers
+
+@{
+    ViewBag.Title = "GetCustomerToUpdate";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("UpdateCustomer", "Customer", FormMethod.Post))
+{
+    <div>
+        @Html.Label("Müşteri ID")
+        @Html.TextBoxFor(m => m.CustormerID, new { @class = "form-control", @readonly = "readonly" })
+        @* @readonly="readonly" ifadesi ile kullanıcının veri girmesini önlüyoruz.  *@
+    </div>
+    <div>
+        @Html.Label("Müşteri Adı")
+        @Html.TextBoxFor(m => m.CustomerFirstName, new { @class = "form-control", required = "", maxlength = 25, minlength = 3 })
+    </div>
+    <div>
+        @Html.Label("Müşteri Soyadı")
+        @Html.TextBoxFor(m => m.CustomerSurName, new { @class = "form-control", required = "", maxlength = 25, minlength = 3 })
+    </div>
+    <div>
+        @Html.Label("Müşteri Yaşı")
+        @Html.TextBoxFor(m => m.CustomerAge, new { @class = "form-control", required = "", type = "number", max = 65, min = 14 })
+    </div>
+    <div>
+        @Html.Label("Müşteri Şehri")
+        @Html.TextBoxFor(m => m.CustomerCity, new { @class = "form-control", required = "", maxlength = 25, minlength = 3 })
+    </div>
+    <div>
+        @Html.Label("Müşteri Ülkesi")
+        @Html.TextBoxFor(m => m.CustomerCountry, new { @class = "form-control", required = "", maxlength = 25, minlength = 3 })
+    </div>
+    <div style="margin-top:10px">
+        <button href="/Customer/UpdateCustomer" class="btn btn-warning">Update Customer</button>
+
+    </div>
+}
+
