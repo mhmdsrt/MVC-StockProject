@@ -26,8 +26,15 @@ ________________________________________________________________________________
 ![Ekran Görüntüsü (365)](https://github.com/user-attachments/assets/b5a92bc1-1e88-4ffb-9c7a-8a4a7fa5b3d5)
 __________________________________________________________________________________________________________
 # Ürünler
-![Ekran Görüntüsü (358)](https://github.com/user-attachments/assets/ce11755d-e0bc-48bf-be94-f4bd18283892)
+## Delete butonuna tıklanıldığında silmek için tekrar soruyoruz eğer iptal edilirse silme işlemi gerçekleşmiyor.
 ![Ekran Görüntüsü (371)](https://github.com/user-attachments/assets/ab0de2b7-3d02-4bcf-9450-87d3497188f9)
+## DropDownList:
+![Ekran Görüntüsü (374)](https://github.com/user-attachments/assets/198d2cd2-bbc5-4b97-9f3c-7e91bc85a24e)
+## Girilecek fiyatın bellir bir aralıkta olmasını sağlama:
+![Ekran Görüntüsü (375)](https://github.com/user-attachments/assets/4d73170b-8dae-46d6-a680-f7ded8c9a949)
+## Update butonuna basıldığında güncellecenk verileri taşıma:
+![Ekran Görüntüsü (376)](https://github.com/user-attachments/assets/ec59a36b-5d3c-47ac-9f6a-b73e98232ace)
+
 
 __________________________________________________________________________________________________________
 # Müşteriler
