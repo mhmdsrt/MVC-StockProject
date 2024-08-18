@@ -5,7 +5,7 @@ ________________________________________________________________________________
 ## -> DropDownList - ViewBag - SelectListItem List
 ## -> Validation - [Required],[Range],[StringLength] - Hem Model tarafında hem HTML tarafında
 ## -> Layout 
-## -> PagedList - Sayfalama
+## -> PagedList - Sayfalama - @Html.PagedListPager()
 ## -> Modal Popup 
 ## -> Alert 
 ## -> @using (Html.BeginForm("ActionName", "ControllerName", FormMethod)){}  yapısı
