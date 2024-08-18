@@ -2,7 +2,7 @@
 __________________________________________________________________________________________________________
 # Projemde Öğrendiğim ve Uyguladığım konu başlıkları:
 ## -> Model-View-Controller yapısı ve mantığı
-## -> DropDownList - ViewBag - List<SelectListItem>
+## -> DropDownList - ViewBag - SelectListItem List
 ## -> Validation - [Required],[Range],[StringLength] - Hem Model tarafında hem HTML tarafında
 ## -> Layout 
 ## -> PagedList - Sayfalama
