@@ -35,6 +35,9 @@ ________________________________________________________________________________
 ![Ekran Görüntüsü (366)](https://github.com/user-attachments/assets/816836ea-9339-45bd-878f-549e872e14a2)
 ![Ekran Görüntüsü (367)](https://github.com/user-attachments/assets/a54aba35-60c6-49d9-ae5a-9a7b8cad96f3)
 ![Ekran Görüntüsü (368)](https://github.com/user-attachments/assets/4f228a73-9249-4180-9b48-dffea602f1fe)
+## Güncellenecek verileri çekme:
+![Ekran Görüntüsü (373)](https://github.com/user-attachments/assets/690bbd55-134e-49e5-ae5f-6703aa3e487e)
+
 __________________________________________________________________________________________________________
 # Satışlar
 ![Ekran Görüntüsü (360)](https://github.com/user-attachments/assets/20098307-5ee4-453b-8660-1bd31c394130)
