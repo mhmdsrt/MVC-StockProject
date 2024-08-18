@@ -29,9 +29,17 @@ ________________________________________________________________________________
 __________________________________________________________________________________________________________
 # Müşteriler
 ![Ekran Görüntüsü (359)](https://github.com/user-attachments/assets/1ee5ad40-6794-4cad-8b27-be126d13ece2)
+## Ekleme yaparken validation kontrollerimiz:
+![Ekran Görüntüsü (366)](https://github.com/user-attachments/assets/816836ea-9339-45bd-878f-549e872e14a2)
+![Ekran Görüntüsü (367)](https://github.com/user-attachments/assets/a54aba35-60c6-49d9-ae5a-9a7b8cad96f3)
+![Ekran Görüntüsü (368)](https://github.com/user-attachments/assets/4f228a73-9249-4180-9b48-dffea602f1fe)
 __________________________________________________________________________________________________________
 # Satışlar
 ![Ekran Görüntüsü (360)](https://github.com/user-attachments/assets/20098307-5ee4-453b-8660-1bd31c394130)
+## Her yerde kullandığımız validation kontrollerimiz:
+![Ekran Görüntüsü (369)](https://github.com/user-attachments/assets/a7a173d4-23e4-479d-8c2f-aaacfbb7133f)
+![Ekran Görüntüsü (370)](https://github.com/user-attachments/assets/2eee361a-4880-4a07-b815-ea198ce5b864)
+
 __________________________________________________________________________________________________________
 # Hakkımda
 ![Ekran Görüntüsü (361)](https://github.com/user-attachments/assets/8d1d5a53-6c45-423b-8f1c-9b48c99c8c57)
