@@ -5,7 +5,7 @@ ________________________________________________________________________________
 ## -> DropDownList - ViewBag - SelectListItem List
 ## -> View'ler arası veri transferi
 ## -> Validation - [Required],[Range],[StringLength] - Hem Model tarafında hem HTML tarafında
-## -> Layout 
+## -> Layout - @RenderBody() yapısı
 ## -> PagedList - Sayfalama - @Html.PagedListPager()
 ## -> Modal Popup 
 ## -> Alert 
