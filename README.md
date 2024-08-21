@@ -15,7 +15,7 @@ ________________________________________________________________________________
 ## -> Entity Framework - DbFirst - LinQ - CRUD
 ## -> Http Fonksiyonlarından [HttpPost] ve [HttpGet]
 __________________________________________________________________________________________________________
-# Kategoriler
+# Categories
 ![Ekran Görüntüsü (357)](https://github.com/user-attachments/assets/6392f7b7-2a4f-4ea0-9d65-b2321f151e09)
 ## Update butonuna tıklandığında güncellencek verileri taşıyoruz ayrıca kullancının ID bölümüne veri girmesini ya da değiştirmesini engelliyoruz.
 ![Ekran Görüntüsü (362)](https://github.com/user-attachments/assets/c06cc66c-0130-4258-bfd2-d2fde95c15c5)
@@ -25,7 +25,7 @@ ________________________________________________________________________________
 ## Delete butonuna tıklanıldığında silmek için tekrar soruyoruz eğer iptal edilirse silme işlemi gerçekleşmiyor.
 ![Ekran Görüntüsü (365)](https://github.com/user-attachments/assets/b5a92bc1-1e88-4ffb-9c7a-8a4a7fa5b3d5)
 __________________________________________________________________________________________________________
-# Ürünler
+# Products
 ## Delete butonuna tıklanıldığında silmek için tekrar soruyoruz eğer iptal edilirse silme işlemi gerçekleşmiyor.
 ![Ekran Görüntüsü (371)](https://github.com/user-attachments/assets/ab0de2b7-3d02-4bcf-9450-87d3497188f9)
 ## DropDownList:
@@ -37,7 +37,7 @@ ________________________________________________________________________________
 
 
 __________________________________________________________________________________________________________
-# Müşteriler
+# Customers
 ![Ekran Görüntüsü (359)](https://github.com/user-attachments/assets/1ee5ad40-6794-4cad-8b27-be126d13ece2)
 ## Ekleme yaparken validation kontrollerimiz:
 ![Ekran Görüntüsü (366)](https://github.com/user-attachments/assets/816836ea-9339-45bd-878f-549e872e14a2)
@@ -47,16 +47,16 @@ ________________________________________________________________________________
 ![Ekran Görüntüsü (373)](https://github.com/user-attachments/assets/690bbd55-134e-49e5-ae5f-6703aa3e487e)
 
 __________________________________________________________________________________________________________
-# Satışlar
+# Saleses
 ![Ekran Görüntüsü (360)](https://github.com/user-attachments/assets/20098307-5ee4-453b-8660-1bd31c394130)
 ## Her yerde kullandığımız validation kontrollerimiz:
 ![Ekran Görüntüsü (369)](https://github.com/user-attachments/assets/a7a173d4-23e4-479d-8c2f-aaacfbb7133f)
 ![Ekran Görüntüsü (370)](https://github.com/user-attachments/assets/2eee361a-4880-4a07-b815-ea198ce5b864)
 
 __________________________________________________________________________________________________________
-# Hakkımda
+# AboutMe
 ![Ekran Görüntüsü (361)](https://github.com/user-attachments/assets/8d1d5a53-6c45-423b-8f1c-9b48c99c8c57)
 __________________________________________________________________________________________________________
-# Veri Tabanı
+# Database
 ![Ekran Görüntüsü (377)](https://github.com/user-attachments/assets/86675a19-0c61-4d75-9976-b36a8fa6e867)
 
