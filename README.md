@@ -1,7 +1,7 @@
 # MVC-StockProject
 __________________________________________________________________________________________________________
 # Projemde Öğrendiğim ve Uyguladığım konu başlıkları:
-## -> Model-View-Controller yapısı ve mantığı
+## ✔ Model-View-Controller yapısı ve mantığı
 ## -> DropDownList - ViewBag - SelectListItem List
 ## -> View'ler arası veri transferi
 ## -> Validation - [Required],[Range],[StringLength] - Hem Model tarafında hem HTML tarafında
