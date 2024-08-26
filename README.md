@@ -1,6 +1,6 @@
 # ✨ MVC-StockProject
 __________________________________________________________________________________________________________
-# 🎯Projemde Öğrendiğim ve Uyguladığım konu başlıkları:
+# 🎯 Projemde Öğrendiğim ve Uyguladığım konu başlıkları: 🎯
 # ☑  Model-View-Controller yapısı ve mantığı
 # ☑ DropDownList - ViewBag - SelectListItem List
 # ☑  View'ler arası veri transferi
